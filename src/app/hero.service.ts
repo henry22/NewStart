@@ -75,13 +75,24 @@ export class HeroService implements HeroCounterInterface {
 
   /** POST: add a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+    let observableHero;
+
+    if(this.counterStore$.getValue() === 0) {
+      hero.id = 1;
+      observableHero = this.http.put(this.heroesUrl, hero, httpOptions);
+    } else {
+      observableHero = this.http.post<Hero>(this.heroesUrl, hero, httpOptions);
+    }
+
+    observableHero = observableHero.pipe(
       tap((hero: Hero) => {
         this.log(`added hero w/ id=${hero.id}`);
         this.counterStore$.next(this.counterStore$.getValue() + 1);
       }),
       catchError(this.handleError<Hero>("addHero"))
     );
+
+    return observableHero;
   }
 
   /** DELETE: delete the hero from the server */
