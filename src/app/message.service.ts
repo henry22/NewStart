@@ -9,6 +9,8 @@ export class MessageService {
   }
 
   clear() {
-    this.messages = [];
+    if(confirm('您確定要刪除訊息嗎?')) {
+      this.messages = [];
+    }
   }
 }
