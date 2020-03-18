@@ -3,8 +3,8 @@
   <button class="clear" (click)="messageService.clearTopFourMessages()">Clear top 4 messages</button>
 </h1>
 <nav>
-  <a routerLink="/cl-dashboard">Dashboard</a>
-  <a routerLink="/cl-heroes">{{counter$ | async}} Heroes</a>
+  <a routerLink="/cl-dashboard">{{heroesTitle}}</a>
+  <a routerLink="/cl-heroes">{{counter$ | async}} {{dashboardTitle}}</a>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

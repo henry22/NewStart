@@ -17,6 +17,7 @@ import { HeroService }          from './hero.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
 import { HeroCounterInterface } from './hero-counter.interface';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { HeroCounterInterface } from './hero-counter.interface';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-
+    HttpModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
