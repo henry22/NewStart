@@ -16,6 +16,7 @@ import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { HeroService }          from './hero.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
+import { HeroCounterInterface } from './hero-counter.interface';
 
 @NgModule({
   imports: [
@@ -39,7 +40,7 @@ import { MessagesComponent }    from './messages/messages.component';
     MessagesComponent,
     HeroSearchComponent
   ],
-  providers: [ HeroService, MessageService ],
+  providers: [ HeroService, MessageService, {provide: HeroCounterInterface, useExisting: HeroService} ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
